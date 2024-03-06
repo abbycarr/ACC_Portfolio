@@ -316,7 +316,8 @@ code {
 	background: #f7f7f7;
 	border-radius: 0.35em;
 	border: solid 2px #efefef;
-	font-family: "Courier New", monospace;
+	font-family: "Lexend",
+		sans-serif;
 	font-size: 0.9em;
 	margin: 0 0.25em;
 	padding: 0.25em 0.65em;
@@ -324,7 +325,8 @@ code {
 
 pre {
 	-webkit-overflow-scrolling: touch;
-	font-family: "Courier New", monospace;
+	font-family: "Lexend",
+		sans-serif;
 	font-size: 0.9em;
 	margin: 0 0 2em 0;
 }
@@ -2024,7 +2026,8 @@ input[type="radio"]+label:before {
 	text-rendering: auto;
 	line-height: 1;
 	text-transform: none !important;
-	font-family: 'Font Awesome 5 Free';
+	font-family: "Lexend",
+		sans-serif;
 	font-weight: 900;
 }
 
@@ -2124,7 +2127,8 @@ input[type="radio"]+label:before {
 	text-rendering: auto;
 	line-height: 1;
 	text-transform: none !important;
-	font-family: 'Font Awesome 5 Free';
+	font-family: "Lexend",
+		sans-serif;
 	font-weight: 400;
 }
 
@@ -2141,7 +2145,8 @@ input[type="radio"]+label:before {
 }
 
 .icon.brands:before {
-	font-family: 'Font Awesome 5 Brands';
+	font-family: "Lexend",
+		sans-serif;
 }
 
 /* Image */
@@ -2921,7 +2926,8 @@ input[type="button"]:disabled,
 	text-rendering: auto;
 	line-height: 1;
 	text-transform: none !important;
-	font-family: 'Font Awesome 5 Free';
+	font-family: "Lexend",
+		sans-serif;
 	font-weight: 900;
 }
 
@@ -2970,7 +2976,8 @@ input[type="button"]:disabled,
 	text-rendering: auto;
 	line-height: 1;
 	text-transform: none !important;
-	font-family: 'Font Awesome 5 Free';
+	font-family: "Lexend",
+		sans-serif;
 	font-weight: 900;
 }
 
@@ -3033,7 +3040,8 @@ input[type="button"]:disabled,
 	text-rendering: auto;
 	line-height: 1;
 	text-transform: none !important;
-	font-family: 'Font Awesome 5 Free';
+	font-family: "Lexend",
+		sans-serif;
 	font-weight: 900;
 }
 

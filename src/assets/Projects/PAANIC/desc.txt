@@ -5,7 +5,10 @@ Desc
 resented at RISE Northeastern. Robotic advancements call for the further application of Natural Language Processing (NLP) and the ability of robots to understand natural language instructions from humans. As such, we have developed a method to reduce mistakes in robotic following of human commands by implementing hazard tagging on natural language instructions, which can then be modified into the real-life application of robotic grip strength, general procedure for a task, and navigation of dangerous situations.
 
 Skills
-Public Speaking, Passionate about work, Python (Programming Language), Presentation Skills, Machine Learning, Easily Adaptable, Communication, Product Labeling, Jupyter, Git, Creativity and Innovation, Data Visualization
+Public Speaking, Passionate about work, Python (Programming Language), 
+Presentation Skills, Machine Learning, Easily Adaptable, Communication, 
+Product Labeling, Jupyter, Git, Creativity and Innovation, 
+Data Visualization
 
 Paper
 The resulting academic paper for our research. Involves the history, current work, and interpretation of our work.
