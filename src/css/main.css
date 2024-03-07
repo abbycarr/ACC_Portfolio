@@ -3381,7 +3381,7 @@ body.is-touch .poptrox-popup .closer {
 
 .ll-cc .eeee {
 	margin-right: 15px;
-	color: #7D64D6;
+	color: #797676;
 	width: 100px;
 }
 
@@ -3406,4 +3406,8 @@ body.is-touch .poptrox-popup .closer {
 #abby {
 	color: #5B6A9A;
 	font-weight: bold;
+}
+
+.hi {
+	color: #7D64D6;
 }
