@@ -1,11 +1,12 @@
-Teaching Assistant for Professional Development for Khoury Co-op Course
+
 01/2022 - 05/2023
 
 Desc
 Assisting younger Computer Science students in their preparation and search for an internship through the Northeastern program. Presenting classroom lessons with the professor and leading partnered meeting for students. Developing students' resumes, behavioral interviewing skills, and coding challenge abilities.
 
 Skills
-Presentation Skills, Meeting Scheduling, Reliability,  Adobe Premiere Pro, Task Management
+Presentation Skills, Meeting Scheduling, 
+Reliability,  Adobe Premiere Pro, Task Management
 
 Paper
 A guide that I developed in order to give a mock analytical case interview to students in Khoury College of Computer Science who are interested in a more analytical career. Developing their interviewing skills and preparedness is a part of the Co-op Preparedness course for students in the college. My guide is heavily derived from the source: https://www.mckinsey.com/careers/interviewing/beautify.

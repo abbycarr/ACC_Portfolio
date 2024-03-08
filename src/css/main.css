@@ -193,7 +193,7 @@ body,
 input,
 select,
 textarea {
-	color: #797676;
+	color: #434242;
 	font-family: "Lexend", sans-serif;
 	font-size: 16pt;
 	font-weight: 400;
@@ -2006,7 +2006,7 @@ input[type="radio"] {
 input[type="checkbox"]+label,
 input[type="radio"]+label {
 	text-decoration: none;
-	color: #797676;
+	color: #434242;
 	cursor: pointer;
 	display: inline-block;
 	font-size: 1em;
@@ -3381,7 +3381,7 @@ body.is-touch .poptrox-popup .closer {
 
 .ll-cc .eeee {
 	margin-right: 15px;
-	color: #797676;
+	color: #434242;
 	width: 100px;
 }
 
@@ -3398,7 +3398,7 @@ body.is-touch .poptrox-popup .closer {
 
 .ll-cc div span {
 	font-size: 16px;
-	color: #797676;
+	color: #434242;
 	line-height: 22px;
 }
 

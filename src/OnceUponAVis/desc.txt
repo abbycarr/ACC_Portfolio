@@ -5,7 +5,12 @@ Desc
 Despite the availability of e-readers such as Kindles, reading has become less and less common. One way this shift can be reversed is by giving people resources to find new books. The general area of interest for our project is the ratings and rankings of books, and how they compare to one another. We intend to address the comparison of popular books and allow book readers to get a sense of similarities and differences between books. This will potentially give them new books to read based on ones they have enjoyed in the past. We believe this visualization will address an important topic as reading improves one's focus,memory, empathy, and communication skills.
 
 Skills
-Public Speaking, Tableau, Scikit-Learn, Passionate about work, Presentation Skills, User-centered Design, Easily Adaptable, Teamwork, SQL, HTML, Communication, JavaScript, Git, Data Analysis, D3.js, Visual Studio, Data Manipulation, Self-directed Learning, Requirements Analysis, Data Visualization, Relational Databases
+Public Speaking, Tableau, Scikit-Learn, 
+Passionate about work, Presentation Skills, 
+User-centered Design, Easily Adaptable, Teamwork, 
+SQL, HTML, Communication, JavaScript, Git, 
+Data Analysis, D3.js, Visual Studio, Data Manipulation, 
+Self-directed Learning, Requirements Analysis, Data Visualization, Relational Databases
 
 GitHub
 https://github.com/DS4200-S22/final-project-once-upon-a-vis
