@@ -1,0 +1,23 @@
+Monster Swap started with handmade monsters I scribbled on every blank surface. And truly? It started with my dad, who would have us take turns drawing features of a creature on napkins while waiting for food at restaurants. 
+
+Over the years i’ve gathered a hoard of laminated monster drawings- in school notes, on airplanes, in the middle of the night, or while watching tv; I was always drawing. 
+
+My first debut of monsters was when in an imaginary worlds course presentation. It was a hit, and I was certain my monsters hadn’t made their last appearance. Last year, for a birthday, I had another chance- a party for sharing powerpoints on whatever topic you wish. It was time to go big and bold! I wanted to create something interactive, and settled on a mix and match build-your-monster activity.
+
+In order to create a group activity that could function well for a crowd watching the presentation, I had to consider how quickly I could distribute materials, how easily participants could make a decision, and how many monster pieces to have.
+
+For functionality, I opted to turn my drawings into stickers. I printed stickers at home and cut them out with an exacto blade, including a couple of extras for bodies and heads and making extras of varing sizes for eyes, mouths, and party hats.
+
+With players in a crowd, I kept pieces in clear bags to keep them sortable but still together. Big stickers had easy pull tabs and I started bags at different points in the crowd.
+
+To facilitate group fun, I added a spot for Name, Occupation, and two random bizarre categories on each monster paper. Players volunteered to share to the group- see some of them above! One of my favorite parts was that many players flipped pieces sideways or upside down from my initial intent.
+
+Moving forward, I couldn't get stickers out of my mind, nor the fun of mixing and matching my monsters that night. For an event, I decided to try and create an individual version of my activity. I landed on sticker sheets, along with a card to build and name it on.
+
+It was my first time ordering stickers! Since I was handing them out for free, I could compramize on over-the-top quality for a cost effective method. I was excited to be ordering from an at-home printer, who helped me through my digital design. I learned how to use GIMP, and transfered my digital drawings onto a sheet; spaced, and with additional style.
+
+Handing out the stickers was cute and rewarding- I held a bag saying "adopt a monster - ask me". I was able to connect with fellow artists, gain a few little boons, and watch people walk away with a piece of my art.
+
+Still, then- the monster thoughts didn't stop. When I was sizing the pieces for my stickers, I stacked them on one canvas. It made me think, what if i made an online monster swap game? And so it started.
+
+Creating Monster Swap was a way to harness my technical and creative skills together to show how far one project can go. Monster Swap was built in a Next.js App using React components and Tailwind CSS styling.
