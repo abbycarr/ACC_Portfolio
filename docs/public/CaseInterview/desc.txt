@@ -13,3 +13,7 @@ A guide that I developed in order to give a mock analytical case interview to st
 
 Display
 An example look at the Case Resource from the point of a TA who is tracking feedback.
+
+Creating Monster Swap was a way to harness my technical and creative skills together to show how far one project can go.
+                Monster Swap was built in a Next.js App using React components and Tailwind CSS styling.
+              
