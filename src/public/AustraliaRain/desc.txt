@@ -16,3 +16,25 @@ The Data Cleaning notebook for our data.
 
 Display
 A look through the Processing and Data Analytics notebook on the GitHub.
+
+aus ///
+- cin paanic vis x
+bb ////
+- ms vis case x
+case //
+- ms cin chroma x
+cin //
+- edml bb case x
+chroma ///
+- case ms bb x
+infect /
+- aus paanic chroma x
+edml ///
+- aus paanic infect x
+ms /////
+- bb vis chroma x
+vis ///
+- bb ms edml x
+paanic ///
+- edml aus ms x
+
