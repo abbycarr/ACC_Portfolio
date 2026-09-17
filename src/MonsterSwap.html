@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en" x-data="{
+  dark: localStorage.getItem('theme')==='dark'||(!localStorage.getItem('theme')&&window.matchMedia('(prefers-color-scheme: dark)').matches),
+  scrolled: false,
+  mobileMenu: false,
+  progress: 0
+}" :class="{'dark':dark}" x-init="
+  $watch('dark', v => localStorage.setItem('theme', v ? 'dark' : 'light'));
+  window.addEventListener('scroll', () => {
+    scrolled = window.scrollY > 20;
+    progress = Math.min(100, Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100));
+  }, { passive: true });
+" class="scroll-smooth">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="Novu — SaaS Dashboard redesign case study by Eliott. How a full UX overhaul reduced cognitive load by 40% and improved trial-to-paid conversion." />
+  <meta name="author" content="Eliott" />
+  <meta property="og:title" content="Novu — SaaS Dashboard · Case Study by Eliott" />
+  <meta property="og:type" content="article" />
+  <title>Novu — SaaS Dashboard · Case Study — Eliott</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
+    rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { display: ['PT Sans', 'sans-serif'], body: ['DM Sans', 'sans-serif'] },
+          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+        }
+      }
+    }
+  </script>
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
+    html {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'PT Sans', sans-serif;
+    }
+
+    ::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #FF6B2B;
+      border-radius: 99px;
+    }
+
+    body {
+      transition: background-color .3s, color .3s;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: .4;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: currentColor;
+      transition: width .25s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    .btn-primary {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: rgba(255, 255, 255, .18);
+      transform: skewX(-20deg);
+      transition: left .4s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .btn-primary:hover::after {
+      left: 160%;
+    }
+
+    [x-cloak] {
+      display: none !important;
+    }
+
+    .photo-frame {
+      position: relative;
+      overflow: hidden;
+      background: #e4e4e7;
+    }
+
+    .photo-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Reading progress */
+    .progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      background: #FF6B2B;
+      z-index: 100;
+      transition: width .1s linear;
+    }
+
+    /* Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .55s cubic-bezier(.4, 0, .2, 1), transform .55s cubic-bezier(.4, 0, .2, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .d1 {
+      transition-delay: .07s
+    }
+
+    .d2 {
+      transition-delay: .14s
+    }
+
+    .d3 {
+      transition-delay: .21s
+    }
+
+    .d4 {
+      transition-delay: .28s
+    }
+
+    /* Case study prose */
+    .prose-cs h2 {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 700;
+      margin: 2.75rem 0 1rem;
+      line-height: 1.25;
+    }
+
+    .prose-cs h3 {
+      font-family: 'PT Sans', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 2rem 0 .6rem;
+      line-height: 1.3;
+      color: #FF6B2B;
+    }
+
+    .prose-cs p {
+      margin: 0 0 1.4rem;
+      line-height: 1.82;
+      color: #52525b;
+    }
+
+    .dark .prose-cs p {
+      color: #a1a1aa;
+    }
+
+    .prose-cs ul {
+      margin: 0 0 1.4rem 1.5rem;
+      list-style: disc;
+    }
+
+    .prose-cs li {
+      margin-bottom: .45rem;
+      line-height: 1.7;
+      color: #52525b;
+    }
+
+    .dark .prose-cs li {
+      color: #a1a1aa;
+    }
+
+    .prose-cs blockquote {
+      border-left: 3px solid #FF6B2B;
+      padding: .75rem 1.25rem;
+      margin: 0 0 1.8rem;
+      background: #fff7f4;
+      border-radius: 0 8px 8px 0;
+    }
+
+    .dark .prose-cs blockquote {
+      background: #27272a;
+    }
+
+    .prose-cs blockquote p {
+      color: #52525b;
+      font-style: italic;
+      margin: 0;
+    }
+
+    .dark .prose-cs blockquote p {
+      color: #a1a1aa;
+    }
+
+    .prose-cs hr {
+      border: none;
+      border-top: 1px solid #e4e4e7;
+      margin: 2.5rem 0;
+    }
+
+    .dark .prose-cs hr {
+      border-top-color: #27272a;
+    }
+
+    .prose-cs a {
+      color: #FF6B2B;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    /* Stat card */
+    .stat-card {
+      border-left: 3px solid #FF6B2B;
+    }
+
+    /* Image caption */
+    .img-caption {
+      font-size: .8rem;
+      color: #a1a1aa;
+      text-align: center;
+      margin-top: .6rem;
+    }
+
+    /* Step badge */
+    .step-badge {
+      width: 2rem;
+      height: 2rem;
+      min-width: 2rem;
+      border-radius: 50%;
+      background: #FF6B2B;
+      color: #fff;
+      font-family: 'PT Sans', sans-serif;
+      font-weight: 700;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* card hover */
+    .card-h {
+      transition: transform .28s cubic-bezier(.4, 0, .2, 1), border-color .18s;
+    }
+
+    .card-h:hover {
+      transform: translateY(-4px);
+    }
+  </style>
+</head>
+
+<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+
+  <!-- Reading progress bar -->
+  <div class="progress-bar" :style="`width:${progress}%`" role="progressbar" :aria-valuenow="progress" aria-valuemin="0"
+    aria-valuemax="100" aria-label="Reading progress"></div>
+
+  <!-- ═══ NAV ═══ -->
+  <header class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300"
+    :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
+    <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
+      <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
+        <span class="text-zinc-900 dark:text-white">Abby</span><span class="text-accent">Carr</span>
+      </a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium" role="list">
+        <li><a href="projects.html" class="nav-link text-accent font-medium">Projects</a></li>
+        <li><a href="index.html#about"
+            class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">About</a>
+        </li>
+        <li><a href="index.html#contact"
+            class="nav-link text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors">Contact</a>
+        </li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <button @click="dark=!dark"
+          class="w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          :aria-label="dark ? 'Light mode' : 'Dark mode'">
+          <svg x-show="!dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+          <svg x-show="dark" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
+          </svg>
+        </button>
+        <a href="public/AbbyCarrResume.pdf"
+          class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume
+          →</a>
+        <button @click="mobileMenu=!mobileMenu"
+          class="md:hidden w-9 h-9 flex items-center justify-center rounded-full border border-zinc-200 dark:border-zinc-800"
+          aria-label="Toggle menu">
+          <svg x-show="!mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg x-show="mobileMenu" xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24"
+            stroke="currentColor" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+    <div x-show="mobileMenu" x-cloak x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
+      x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
+      x-transition:leave-end="opacity-0 -translate-y-2"
+      class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium" role="list">
+        <li><a href="projects.html" @click="mobileMenu=false" class="block text-accent font-medium">Projects</a></li>
+        <li><a href="index.html#about" @click="mobileMenu=false"
+            class="block text-zinc-700 dark:text-zinc-300">About</a></li>
+        <li><a href="index.html#contact" @click="mobileMenu=false"
+            class="block text-zinc-700 dark:text-zinc-300">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ═══ CASE STUDY HEADER ═══ -->
+    <article>
+      <header class="pt-32 pb-10 max-w-4xl mx-auto px-6">
+
+        <!-- Back link -->
+        <a href="projects.html"
+          class="inline-flex items-center gap-2 text-sm text-zinc-500 dark:text-zinc-400 hover:text-accent transition-colors mb-8">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+            aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          Back to projects
+        </a>
+
+        <!-- Tags + date -->
+        <div class="flex flex-wrap items-center gap-3 mb-6"><span
+            class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Web
+            Dev</span>
+          <span
+            class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Creativity</span>
+          <span
+            class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">React.js</span>
+          <span
+            class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">Tailwind</span>
+          <span class="text-xs text-zinc-400 ml-1">2026 </span>
+        </div>
+
+        <h1
+          class="reveal font-display font-bold text-4xl md:text-5xl lg:text-6xl text-zinc-900 dark:text-white leading-tight mb-6">
+          Monster Swap
+        </h1>
+
+        <p class="reveal d1 text-xl text-zinc-500 dark:text-zinc-400 leading-relaxed mb-10 max-w-2xl">
+          Follow the evolution of Monster Swap from hand-drawn characters to physical games, convention giveaways, and
+          an
+          interactive web experience. At each stage, I adapted the project to a new medium and considered how design
+          choices could
+          make the experience more intuitive, engaging, and fun.
+          <br><br>
+          For its digital iteration, I built Monster Swap with Next.js, React, and Tailwind CSS, using the project as an
+          opportunity to expand my front-end development skills while bringing years of creative work into one
+          interactive
+          application
+        </p>
+
+        <!-- Meta row -->
+        <div
+          class="reveal d2 grid grid-cols-2 md:grid-cols-3 gap-4 py-8 border-t border-b border-zinc-100 dark:border-zinc-900">
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Source</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">Personal Project</p>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Timeline</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">Feb 2025– Sep 2026</p>
+          </div>
+          <div>
+            <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Deliverables</p>
+            <p class="font-medium text-zinc-900 dark:text-white text-sm">HTML/CSS</p>
+          </div>
+        </div>
+      </header>
+
+      <!-- ═══ HERO IMAGE ═══ -->
+      <div class="max-w-6xl mx-auto px-6 mb-16">
+        <div class="reveal photo-frame w-full h-73 md:h-[480px] rounded-3xl">
+          <img src="public/MonsterSwap/display.jpg" alt="Novu — SaaS Dashboard redesign hero" loading="eager" />
+        </div>
+      </div>
+
+      <!-- ═══ ARTICLE BODY ═══ -->
+      <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+        <h2>The setup</h2>
+        <img class="float-right ml-2 mb-2 w-1/3 rounded-3xl" src="public/MonsterSwap/m1.jpeg" />
+        <p>
+          Monster Swap started with handmade monsters I scribbled on every blank surface. And truly? It started
+          with
+          my dad, who
+          would have us take turns drawing features of a creature on napkins while waiting for food at restaurants.
+          Over the years i’ve gathered a hoard of laminated monster drawings- from school notes, on airplanes, in
+          the
+          middle of the
+          night, or while watching tv; I was always drawing.
+          <br><br>
+          Monsters drawn over the years have now been brought to life in powerpoint, party game, sticker, and now
+          digital form.
+          Creating Monster Swap was a way to harness my technical and creative skills together to show how far one
+          project can go.
+          Monster Swap was built in a Next.js App using React components and Tailwind CSS styling.
+        </p>
+      </div>
+
+
+      <div class="max-w-6xl mx-auto px-6 mb-12">
+        <div class="reveal grid md:grid-cols-4 gap-5">
+          <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M15.3289 11.4955C14.4941 11.4955 13.724 11.2188 13.1051 10.7522C13.3972 10.3301 13.6284 9.86262 13.786 9.36254C14.1827 9.7539 14.7276 9.99545 15.3289 9.99545C16.5422 9.99545 17.5258 9.01185 17.5258 7.79851C17.5258 6.58517 16.5422 5.60156 15.3289 5.60156C14.7276 5.60156 14.1827 5.84312 13.786 6.23449C13.6284 5.73441 13.3972 5.26698 13.1051 4.84488C13.7239 4.37824 14.4941 4.10156 15.3289 4.10156C17.3706 4.10156 19.0258 5.75674 19.0258 7.79851C19.0258 9.84027 17.3706 11.4955 15.3289 11.4955Z"
+                  fill="#323544" />
+                <path
+                  d="M14.7723 13.1891C15.0227 13.437 15.2464 13.6945 15.4463 13.9566C16.7954 13.9826 17.7641 14.3143 18.4675 14.7651C19.2032 15.2366 19.6941 15.8677 20.0242 16.5168C20.3563 17.1698 20.5204 17.8318 20.6002 18.337C20.6398 18.5878 20.6579 18.795 20.6661 18.9365C20.6702 19.0071 20.6717 19.061 20.6724 19.0952L20.6726 19.1161L20.6727 19.1313L20.6727 19.1363L21.4197 19.1486C20.6793 19.1358 20.6728 19.136 20.6727 19.1363L20.6727 19.1376C20.6666 19.5509 20.9961 19.8914 21.4096 19.8985C21.8237 19.9057 22.1653 19.5758 22.1725 19.1617L21.4284 19.1488C22.1725 19.1617 22.1725 19.1621 22.1725 19.1617L22.1725 19.1599L22.1726 19.1575L22.1726 19.1511L22.1727 19.1319C22.1727 19.1163 22.1726 19.0951 22.1721 19.0686C22.1712 19.0158 22.1689 18.9419 22.1636 18.85C22.153 18.6665 22.1303 18.4094 22.0819 18.1029C21.9856 17.4936 21.7848 16.6697 21.3612 15.8368C20.9357 15 20.2801 14.1451 19.2768 13.5022C18.2708 12.8574 16.9604 12.4549 15.274 12.4549C14.8284 12.4549 14.4092 12.483 14.0148 12.5362C14.2852 12.7384 14.5376 12.9566 14.7723 13.1891Z"
+                  fill="#323544" />
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M5.13173 7.79855C5.13173 5.75678 6.7869 4.1016 8.82867 4.1016C10.8704 4.1016 12.5256 5.75678 12.5256 7.79855C12.5256 9.84031 10.8704 11.4955 8.82867 11.4955C6.7869 11.4955 5.13173 9.84031 5.13173 7.79855ZM8.82867 5.6016C7.61533 5.6016 6.63173 6.58521 6.63173 7.79855C6.63173 9.01189 7.61533 9.99549 8.82867 9.99549C10.042 9.99549 11.0256 9.01189 11.0256 7.79855C11.0256 6.58521 10.042 5.6016 8.82867 5.6016Z"
+                  fill="#323544" />
+                <path
+                  d="M3.37502 19.1374C3.38126 19.5507 3.0517 19.8914 2.63812 19.8986C2.22397 19.9058 1.88241 19.5759 1.87522 19.1617L2.62511 19.1487C1.87522 19.1617 1.87523 19.1621 1.87522 19.1617L1.87519 19.1599L1.87516 19.1575L1.87509 19.1511L1.875 19.1319C1.87499 19.1163 1.87512 19.0951 1.87559 19.0687C1.87653 19.0158 1.87882 18.942 1.88413 18.85C1.89474 18.6665 1.91745 18.4094 1.96585 18.103C2.0621 17.4936 2.26292 16.6697 2.68648 15.8368C3.11206 15 3.76758 14.1452 4.77087 13.5022C5.77688 12.8575 7.08727 12.455 8.77376 12.455C10.4602 12.455 11.7706 12.8575 12.7767 13.5022C13.7799 14.1452 14.4355 15 14.861 15.8368C15.2846 16.6697 15.4854 17.4936 15.5817 18.103C15.6301 18.4094 15.6528 18.6665 15.6634 18.85C15.6687 18.942 15.671 19.0158 15.6719 19.0687C15.6724 19.0951 15.6725 19.1163 15.6725 19.1319L15.6724 19.1511L15.6724 19.1575L15.6723 19.1599C15.6723 19.1603 15.6723 19.1617 14.9282 19.1488L15.6723 19.1617C15.6651 19.5759 15.3235 19.9058 14.9094 19.8986C14.4959 19.8914 14.1664 19.5509 14.1725 19.1376L14.1725 19.1364C14.1726 19.1361 14.1791 19.1358 14.9199 19.1487L14.1725 19.1364L14.1725 19.1314L14.1724 19.1161L14.1722 19.0952C14.1716 19.061 14.17 19.0072 14.1659 18.9366C14.1577 18.7951 14.1396 18.5878 14.1 18.337C14.0202 17.8319 13.8561 17.1699 13.524 16.5168C13.1939 15.8677 12.703 15.2366 11.9673 14.7651C11.2343 14.2954 10.2132 13.955 8.77376 13.955C7.33434 13.955 6.31319 14.2954 5.58022 14.7651C4.84453 15.2366 4.35363 15.8677 4.02351 16.5168C3.6914 17.1699 3.52727 17.8319 3.44749 18.337C3.40787 18.5878 3.38981 18.7951 3.38163 18.9366C3.37756 19.0072 3.37596 19.061 3.37536 19.0952C3.37505 19.1123 3.375 19.1245 3.375 19.1314L3.37502 19.1374Z"
+                  fill="#323544" />
+              </svg>
+
+            </div>
+            <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+              style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Powerpoint</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">
+              For my powerpoint I roleplayed a captured scientist and structured the presentation around an ongoing
+              narrative.
+            </p>
+          </div>
+          <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M7.49578 7.55756C7.26906 7.33084 6.93352 7.23109 6.61611 7.3127C6.29871 7.38525 6.04478 7.62104 5.94503 7.93845L2.04548 20.0814C1.93666 20.417 2.02735 20.7797 2.2722 21.0246C2.45358 21.206 2.68936 21.2966 2.93422 21.2966C3.0249 21.2966 3.12466 21.2785 3.21535 21.2513L15.3674 17.3518C15.6757 17.252 15.9115 16.9981 15.9932 16.6807C16.0748 16.3633 15.975 16.0277 15.7483 15.801L7.49578 7.55756ZM4.37614 18.9297L7.25092 9.96077L13.3451 16.0549L4.37614 18.9297Z"
+                  fill="#323544" />
+                <path
+                  d="M12.5018 9.57049C12.5652 10.0421 12.9643 10.3867 13.4268 10.3867C13.8335 10.3867 14.2482 10.2944 14.651 10.2416C15.8209 10.0874 16.7096 9.08078 16.7006 7.90185V7.61165C16.7006 7.47562 16.755 7.35773 16.8457 7.26704C16.9364 7.17635 17.0633 7.12194 17.1903 7.12194H18.732C19.2489 7.12194 19.666 6.70478 19.666 6.18787C19.666 5.67095 19.2489 5.25379 18.732 5.25379H17.1903C16.5645 5.25379 15.9751 5.49864 15.5307 5.94301C15.0863 6.38738 14.8415 6.98591 14.8415 7.61165V7.90185C14.8415 8.1467 14.6601 8.35529 14.4153 8.38249L13.3089 8.52759C12.801 8.59107 12.4383 9.06264 12.5018 9.57049Z"
+                  fill="#323544" />
+                <path
+                  d="M21.6335 10.8767C19.2756 9.07205 16.7273 10.6681 15.7026 11.7655C15.3489 12.1373 15.3761 12.7267 15.7479 13.0804C16.1252 13.4388 16.7136 13.4109 17.0629 13.0441C17.1354 12.9625 18.9038 11.1306 20.4999 12.3549C20.908 12.6723 21.4975 12.5907 21.8058 12.1826C22.1232 11.7745 22.0416 11.1851 21.6335 10.8767Z"
+                  fill="#323544" />
+                <path
+                  d="M11.4222 7.61201C12.4651 6.81397 13.5171 4.94581 12.1477 3.08673C11.8394 2.66957 11.259 2.57888 10.8419 2.88722C10.4247 3.19555 10.334 3.77595 10.6423 4.19311C11.3588 5.16346 10.5426 5.9343 10.2796 6.14288C9.8715 6.46029 9.79895 7.04068 10.1073 7.44878C10.4263 7.86352 11.0127 7.91378 11.4222 7.61201Z"
+                  fill="#323544" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+              style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Party Game</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">
+              Turning the concept into a group activity required me to make materials easy to access, consider timing
+              for engagement, and design the experience around how people would actually interact with it.
+            </p>
+          </div>
+          <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+              <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M13.0817 2.37507C13.0817 2.02651 12.8415 1.72389 12.5021 1.64469C12.1627 1.56549 11.8134 1.73058 11.6591 2.04315L9.00491 7.42117L3.06991 8.28358C2.78739 8.32463 2.55268 8.52251 2.46446 8.79402C2.37625 9.06553 2.44982 9.36358 2.65425 9.56285L6.94886 13.7491L5.93504 19.6601C5.88678 19.9415 6.00244 20.2258 6.2334 20.3936C6.46436 20.5614 6.77056 20.5836 7.02325 20.4507L12.6807 17.4764C12.9273 17.3468 13.0817 17.0912 13.0817 16.8126V2.37507ZM10.1755 8.4386L11.5817 5.5894V16.3595L7.67034 18.4159L8.49392 13.614C8.53565 13.3707 8.45499 13.1225 8.27822 12.9502L4.78948 9.54946L9.61081 8.84888C9.85509 8.81339 10.0663 8.65996 10.1755 8.4386Z"
+                  fill="#323544" />
+                <path opacity="0.4"
+                  d="M17.6408 20.4508L14.5996 18.852V17.1573L16.9937 18.4159L16.1701 13.6141C16.1284 13.3708 16.2091 13.1225 16.3858 12.9502L19.8746 9.54956L15.0532 8.84898C14.8758 8.82318 14.7157 8.73514 14.5996 8.60401V5.27441L15.6591 7.42126L21.5941 8.28367C21.8767 8.32472 22.1114 8.5226 22.1996 8.79411C22.2878 9.06562 22.2142 9.36367 22.0098 9.56294L17.7152 13.7491L18.729 19.6602C18.7773 19.9415 18.6616 20.2259 18.4306 20.3937C18.1997 20.5615 17.8935 20.5836 17.6408 20.4508Z"
+                  fill="#323544" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+              style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Stickers</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">
+              I adapted the monsters into mix-and-match sticker sets designed to be handed out at a convention,
+              which meant thinking about visual clarity, physical presentation, and quick comprehension in a busy
+              environment.
+            </p>
+          </div>
+          <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
+            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd"
+                  d="M6 4.5C4.75736 4.5 3.75 5.50736 3.75 6.75V15H2.75C2.49007 15 2.24867 15.1346 2.11201 15.3557C1.97536 15.5768 1.96293 15.8529 2.07918 16.0854L3.16459 18.2562C3.54572 19.0185 4.32481 19.5 5.17705 19.5H18.8229C19.6752 19.5 20.4543 19.0185 20.8354 18.2562L21.9208 16.0854C22.0371 15.8529 22.0246 15.5768 21.888 15.3557C21.7513 15.1346 21.5099 15 21.25 15H20.25V6.75C20.25 5.50736 19.2426 4.5 18 4.5H6ZM20.0365 16.5H3.96353L4.50623 17.5854C4.63328 17.8395 4.89297 18 5.17705 18H18.8229C19.107 18 19.3667 17.8395 19.4938 17.5854L20.0365 16.5ZM18.75 15V6.75C18.75 6.33579 18.4142 6 18 6H6C5.58579 6 5.25 6.33579 5.25 6.75V15H18.75Z"
+                  fill="#323544" />
+              </svg>
+            </div>
+            <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2"
+              style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Website</h3>
+            <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">
+              As a website, Monster Swap introduced new challenges: creating intuitive interactions, responsive
+              layouts, and clean visual styling.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr>
+
+      <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+
+        <h2>Process</h2>
+        <h3>Powerpoint</h3>
+        <p>
+
+          My first debut of monsters was when in an imaginary worlds course presentation. It was a hit, and I was
+          certain my
+          monsters hadn’t made their last appearance. Last year, for a birthday, I had another chance- a party for
+          sharing
+          powerpoints on whatever topic you wish. It was time to go big and bold! I wanted to create something
+          interactive, and
+          settled on a mix and match build-your-monster activity.
+
+        </p>
+        <h3>Party Game</h3>
+        <p>
+          <img class="float-right ml-2 my-2 w-1/3 rounded-3xl" src="public/MonsterSwap/crafting.jpeg" />
+
+          In order to create a group activity that could function well for a crowd watching the presentation, I had to
+          consider
+          how quickly I could distribute materials, how easily participants could make a decision, and how many
+          monster
+          pieces to
+          have.
+
+          For functionality, I opted to turn my drawings into stickers. I printed stickers at home and cut them out
+          with
+          an exacto
+          blade, including a couple of extras for bodies and heads and making extras of varying sizes for eyes, mouths,
+          and party
+          hats.
+
+          With players in a crowd, I kept pieces in clear bags to keep them sortable but still together. Big stickers
+          had easy
+          pull tabs and I started bags at different points in the crowd.
+
+          To facilitate group fun, I added a spot for Name, Occupation, and two random bizarre categories on each
+          monster paper.
+          Players volunteered to share to the group. One of my favorite parts was that many
+          players
+          flipped pieces sideways or upside down from my initial intent.
+
+        </p>
+        <h3>Stickers</h3>
+        <img class="float-right ml-2 mb-2 w-1/3 rounded-3xl" src="public/MonsterSwap/stickers.png" />
+        <p>
+
+          Moving forward, I couldn't get stickers out of my mind, nor the fun of mixing and matching my monsters that
+          night. For
+          an event, I decided to try and create an individual version of my activity. I landed on sticker sheets,
+          along
+          with a
+          card to build and name it on.
+
+          It was my first time ordering stickers! Since I was handing them out for free, I could compromise on
+          over-the-top quality for a cost effective method.
+          I was excited to be ordering from an at-home printer, who helped me through my digital design.</p>
+        <img class="float-left mr-2 my-2 w-2/5 rounded-3xl" src="public/MonsterSwap/bag.jpeg" />
+        <p>I learned how to use GIMP, and transferred my digital drawings onto a sheet; spaced, and with
+          additional
+          style.
+          Handing out the stickers was cute and rewarding- I held a bag saying "adopt a monster - ask me". I was able
+          to connect with fellow artists, gain a few little boons, and watch people walk away with a piece of my art.
+
+        <p>
+        <h3>Website</h3>
+        <p>
+
+          Still, then- the monster thoughts didn't stop. When I was sizing the pieces for my stickers, I stacked them on
+          one canvas. It made me think, what if i made an online monster swap game? Starting from scratch, I built a
+          website in a Next.js App using React components and Tailwind styling. I used GIMP to draw and edit images, and
+          HTML5 canvas to facilitate image rendering.
+
+        </p>
+
+      </div>
+
+      <hr>
+
+
+      <div class="max-w-3xl mx-auto px-6 pb-16 prose-cs">
+
+        <h2>Results</h2>
+        <p>The powerpoint was a success. The party was filled with amazing monsters- see some above. The stickers were
+          handed out, but there was an interesting trend. My bag had two sides "Free Stickers. Ask Me!" and "Adopt a
+          Free Monster. Ask Me!" Overwhelmingly, people were more comfortable asking for free stickers. There was also
+          certainly a human connection aspect- the more I made eye contact and engaged with those around me, the more
+          comfortable others seemed to be approaching me. Sales are important (even when the gain is $0)! Although I
+          haven't had much time to see the results of the website, I hope to advertise it well.</p>
+
+
+        <h2>Reflections</h2>
+        <p>The biggest lesson I learned was about connecting humans to products. Engagement and interest was garnered
+          with advertisement and accessibility. Bringing your product to into the customers' comfort zone provides
+          easy
+          interaction.</p>
+        <p>If I were to do it again, I'd push to improve the stickers; wide margins made the stickers harder to layer.
+          Looking forward, I expect to make improvements to the site. From feedback now, or with a formal user
+          interview, I would assess the performance and make improvements to my products. I have been considering
+          adding
+          a ship-to-you sticker service, where I print and mail you your monster. While working on this project, I
+          became newly invigorated to update my website, and see a lot of continued development there.</p>
+
+      </div>
+    </article>
+
+    <!-- ═══ MORE PROJECTS ═══ -->
+    <section class="bg-zinc-50 dark:bg-zinc-900/50 py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex items-center justify-between mb-8">
+          <h2 class="font-display font-bold text-2xl text-zinc-900 dark:text-white">More projects</h2>
+          <a href="projects.html" class="text-sm font-medium text-accent nav-link hidden md:block">View all →</a>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+
+          <article
+            class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+            <div class="photo-frame w-full h-44">
+              <img src="public/BulletinBoard/display.jpg" alt="Finlo — Fintech App" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-2">
+                <span
+                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">HCI</span>
+                <span
+                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Web
+                  Dev</span>
+              </div>
+              <a href="BulletinBoard.html">
+                <h3
+                  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+                  BulletinBoard</h3>
+              </a>
+              <a href="BulletinBoard.html" class="text-sm font-medium text-accent nav-link">View project →</a>
+            </div>
+          </article>
+
+          <article
+            class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+            <div class="photo-frame w-full h-44">
+              <img src="public/OnceUponAVis/display.jpg" alt="Orea — Creative Agency" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-2">
+                <span
+                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">HCI</span>
+                <span
+                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Web
+                  Dev</span>
+              </div>
+              <a href="OnceUponAVis.html">
+                <h3
+                  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+                  Once Upon a Vis</h3>
+              </a>
+              <a href="OnceUponAVis.html" class="text-sm font-medium text-accent nav-link">View project →</a>
+            </div>
+          </article>
+
+          <article
+            class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+            <div class="photo-frame w-full h-44">
+              <img src="public/CHROMA/display.jpg" alt="Bloom — E-commerce" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <div class="flex gap-2 mb-2">
+                <span
+                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Creativity</span>
+              </div>
+              <a href="CHROMA.html">
+                <h3
+                  class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">
+                  CHROMA</h3>
+              </a>
+              <a href="CHROMA.html" class="text-sm font-medium text-accent nav-link">View project →</a>
+            </div>
+          </article>
+
+        </div>
+        <div class="text-center mt-8 md:hidden">
+          <a href="projects.html" class="text-sm font-medium text-accent">View all projects →</a>
+        </div>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="border-t border-zinc-100 dark:border-zinc-900">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-sm text-zinc-400">© <span id="yr"></span> Eliott. All rights reserved. <br> Developed by <a
+          href="https://lbegey78.gumroad.com/" target="_blank" class="font-bold">Laurent Begey</a> • Distributed by <a
+          href="https://themewagon.com/" target="_blank" class="font-bold">ThemeWagon</a></p>
+      <p class="text-xs text-zinc-500">Built with <a href="https://tailwindcss.com"
+          class="hover:text-zinc-900 dark:hover:text-white transition-colors" rel="noopener noreferrer"
+          target="_blank">Tailwind CSS</a> &amp; <a href="https://alpinejs.dev"
+          class="hover:text-zinc-900 dark:hover:text-white transition-colors" rel="noopener noreferrer"
+          target="_blank">Alpine.js</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // document.getElementById('year').textContent = new Date().getFullYear(); 
+
+    // Reveal on scroll
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+      });
+    }, { threshold: .08, rootMargin: '0px 0px -30px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
+
+</body>
+
+</html>
