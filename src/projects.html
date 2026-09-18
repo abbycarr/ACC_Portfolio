@@ -8,9 +8,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link
-    href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500&display=swap"
-    rel="stylesheet" />
-  <script>tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { display: ['PT Sans', 'sans-serif'], body: ['DM Sans', 'sans-serif'] }, colors: { accent: '#FF56a8', 'accent-light': '#FF6FB5' } } } }</script>
+    href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo+Narrow:ital,wght@0,400..700;1,400..700&family=Archivo:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet">
+  <script>tailwind.config = { darkMode: 'class', theme: { extend: { fontFamily: { display: ['Archivo Black', 'sans-serif'], body: ['Archivo', 'sans-serif'] }, colors: { accent: '#FF56a8', 'accent-light': '#FF6FB5' } } } }</script>
   <style>
     *,
     *::before,
@@ -19,7 +19,7 @@
     }
 
     html {
-      font-family: 'DM Sans', sans-serif;
+      font-family: 'Archivo', sans-serif;
     }
 
     h1,
@@ -28,7 +28,7 @@
     h4,
     h5,
     h6 {
-      font-family: 'PT Sans', sans-serif;
+      font-family: 'Archivo Black', sans-serif;
     }
 
     .reveal {
@@ -250,7 +250,7 @@
                       x-text="tag"></span>
                     </template>
                     <template x-for="tag in p.tags" :key="tag">
-                      <span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400" x-text="tag">
+                      <span class="text-xs px-2.5 py-1 rounded-full bg-zinc-100 border border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400" x-text="tag">
                       </span>
                     </template>
                   </div>
