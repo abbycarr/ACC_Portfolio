@@ -28,7 +28,7 @@
       theme: {
         extend: {
           fontFamily: { display: ['PT Sans', 'sans-serif'], body: ['DM Sans', 'sans-serif'] },
-          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+          colors: { accent: '#FF56a8', 'accent-light': '#FF6FB5' }
         }
       }
     }
@@ -80,7 +80,7 @@
     }
 
     ::-webkit-scrollbar-thumb {
-      background: #FF6B2B;
+      background: #FF56a8;
       border-radius: 99px
     }
 
@@ -192,11 +192,11 @@
   </style>
 </head>
 
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 antialiased">
+<body class="bg-[#FFF5FF] dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 antialiased">
 
   <!-- ═══ NAV ═══ -->
   <header class="fixed inset-x-0 top-0 z-50 transition-all duration-300"
-    :class="sc?'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5':''">
+    :class="sc?'bg-[#FFF5FF]/90 dark:bg-zinc-800/90 backdrop-blur-md shadow-sm shadow-black/5':''">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
 
       <a href="#hero" class="font-display font-bold text-xl tracking-tight relative z-10">
@@ -229,7 +229,7 @@
               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
           </svg>
         </button>
-        <!-- resume -->
+        <!-- hire me -->
         <a href="public/AbbyCarrResume.pdf" target="_blank"
           class="hidden md:inline-flex items-center gap-2 shimmer bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">
           Resume <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -255,7 +255,7 @@
       x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0"
       x-transition:leave-end="opacity-0 -translate-y-2"
-      class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      class="md:hidden bg-[#FFF5FF] dark:bg-zinc-800 border-t border-zinc-100 dark:border-zinc-900">
       <ul class="flex flex-col px-6 py-5 gap-4 text-sm font-medium" role="list">
         <li><a href="#projects" @click="mm=false"
             class="block text-zinc-700 dark:text-zinc-300 hover:text-accent transition-colors">projects</a></li>
@@ -299,7 +299,7 @@
             </p>
             <div class="reveal d3 flex flex-wrap gap-4">
               <a href="#projects"
-                class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-white text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
+                class="shimmer inline-flex items-center gap-2 bg-zinc-900 dark:bg-[#FFF5FF] text-white dark:text-zinc-900 font-medium px-7 py-3.5 rounded-full hover:bg-zinc-700 dark:hover:bg-zinc-200 transition-colors text-sm">
                 View my projects
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -353,10 +353,10 @@
             </div>
             <div class="p-7">
               <div class="flex flex-wrap gap-2 mb-4"><span
-                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Web
+                  class="text-xs bg-[#FFD5E9] dark:bg-zinc-800 text-accent border border-[#FF89C2] dark:border-zinc-700 px-3 py-1 rounded-full">Web
                   Dev</span>
                 <span
-                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Creativity</span>
+                  class="text-xs bg-[#FFD5E9] dark:bg-zinc-800 text-accent border border-[#FF89C2] dark:border-zinc-700 px-3 py-1 rounded-full">Creativity</span>
                 <span
                   class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">React.js</span>
                 <span
@@ -399,7 +399,7 @@
             <div class="p-6">
               <div class="flex flex-wrap gap-2 mb-3">
                 <span
-                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">ML</span>
+                  class="text-xs bg-[#FFD5E9] dark:bg-zinc-800 text-accent border border-[#FF89C2] dark:border-zinc-700 px-3 py-1 rounded-full">ML</span>
                 <span
                   class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">
                   Python
@@ -430,9 +430,9 @@
             </div>
             <div class="p-6">
               <div class="flex flex-wrap gap-2 mb-3"><span
-                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">HCI</span>
+                  class="text-xs bg-[#FFD5E9] dark:bg-zinc-800 text-accent border border-[#FF89C2] dark:border-zinc-700 px-3 py-1 rounded-full">HCI</span>
                 <span
-                  class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-3 py-1 rounded-full">Web
+                  class="text-xs bg-[#FFD5E9] dark:bg-zinc-800 text-accent border border-[#FF89C2] dark:border-zinc-700 px-3 py-1 rounded-full">Web
                   Dev</span>
                 <span
                   class="text-xs bg-zinc-200 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-3 py-1 rounded-full">Tableau</span>
@@ -485,25 +485,25 @@
             <p class="text-xs font-medium text-zinc-500 dark:text-zinc-400 uppercase tracking-widest mb-3">Stack &amp;
               tools</p>
             <div class="flex flex-wrap gap-2" role="list" aria-label="Skills"><span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Python</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Python</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">NumPy</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">NumPy</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">SQL</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">SQL</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">JavaScript</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">JavaScript</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">HTML
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">HTML
                 / CSS</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Tailwind
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Tailwind
                 CSS</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">React.js</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">React.js</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Tableau</span>
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Tableau</span>
               <span role="listitem"
-                class="stag text-sm bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Advanced
+                class="stag text-sm bg-[#FFF5FF] dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 px-3.5 py-1.5 rounded-full hover:border-accent">Advanced
                 Excel</span>
             </div>
           </div>

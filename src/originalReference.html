@@ -30,7 +30,7 @@
       theme: {
         extend: {
           fontFamily: { display: ['PT Sans','sans-serif'], body: ['DM Sans','sans-serif'] },
-          colors: { accent: '#FF6B2B', 'accent-light': '#FF8F5C' }
+          colors: { accent: '#FF56a8', 'accent-light': '#FF6FB5' }
         }
       }
     }
@@ -39,7 +39,7 @@
     *,*::before,*::after{box-sizing:border-box;}
     html{font-family:'DM Sans',sans-serif;}
     h1,h2,h3,h4,h5,h6{font-family:'PT Sans',sans-serif;}
-    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#FF6B2B;border-radius:99px;}
+    ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:transparent;}::-webkit-scrollbar-thumb{background:#FF56a8;border-radius:99px;}
     body{transition:background-color .3s,color .3s;}
     body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4;}
     .nav-link{position:relative;}
@@ -53,7 +53,7 @@
     .photo-frame img{width:100%;height:100%;object-fit:cover;display:block;}
 
     /* Reading progress */
-    .progress-bar{position:fixed;top:0;left:0;height:3px;background:#FF6B2B;z-index:100;transition:width .1s linear;}
+    .progress-bar{position:fixed;top:0;left:0;height:3px;background:#FF56a8;z-index:100;transition:width .1s linear;}
 
     /* Reveal */
     .reveal{opacity:0;transform:translateY(22px);transition:opacity .55s cubic-bezier(.4,0,.2,1),transform .55s cubic-bezier(.4,0,.2,1);}
@@ -62,42 +62,42 @@
 
     /* Case study prose */
     .prose-cs h2{font-family:'PT Sans',sans-serif;font-size:1.55rem;font-weight:700;margin:2.75rem 0 1rem;line-height:1.25;}
-    .prose-cs h3{font-family:'PT Sans',sans-serif;font-size:1.15rem;font-weight:700;margin:2rem 0 .6rem;line-height:1.3;color:#FF6B2B;}
+    .prose-cs h3{font-family:'PT Sans',sans-serif;font-size:1.15rem;font-weight:700;margin:2rem 0 .6rem;line-height:1.3;color:#FF56a8;}
     .prose-cs p{margin:0 0 1.4rem;line-height:1.82;color:#52525b;}
     .dark .prose-cs p{color:#a1a1aa;}
     .prose-cs ul{margin:0 0 1.4rem 1.5rem;list-style:disc;}
     .prose-cs li{margin-bottom:.45rem;line-height:1.7;color:#52525b;}
     .dark .prose-cs li{color:#a1a1aa;}
-    .prose-cs blockquote{border-left:3px solid #FF6B2B;padding:.75rem 1.25rem;margin:0 0 1.8rem;background:#fff7f4;border-radius:0 8px 8px 0;}
+    .prose-cs blockquote{border-left:3px solid #FF56a8;padding:.75rem 1.25rem;margin:0 0 1.8rem;background:#fff7f4;border-radius:0 8px 8px 0;}
     .dark .prose-cs blockquote{background:#27272a;}
     .prose-cs blockquote p{color:#52525b;font-style:italic;margin:0;}
     .dark .prose-cs blockquote p{color:#a1a1aa;}
     .prose-cs hr{border:none;border-top:1px solid #e4e4e7;margin:2.5rem 0;}
     .dark .prose-cs hr{border-top-color:#27272a;}
-    .prose-cs a{color:#FF6B2B;text-decoration:underline;text-underline-offset:3px;}
+    .prose-cs a{color:#FF56a8;text-decoration:underline;text-underline-offset:3px;}
 
     /* Stat card */
-    .stat-card{border-left:3px solid #FF6B2B;}
+    .stat-card{border-left:3px solid #FF56a8;}
 
     /* Image caption */
     .img-caption{font-size:.8rem;color:#a1a1aa;text-align:center;margin-top:.6rem;}
 
     /* Step badge */
-    .step-badge{width:2rem;height:2rem;min-width:2rem;border-radius:50%;background:#FF6B2B;color:#fff;font-family:'PT Sans',sans-serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
+    .step-badge{width:2rem;height:2rem;min-width:2rem;border-radius:50%;background:#FF56a8;color:#fff;font-family:'PT Sans',sans-serif;font-weight:700;font-size:.85rem;display:flex;align-items:center;justify-content:center;}
 
     /* card hover */
     .card-h{transition:transform .28s cubic-bezier(.4,0,.2,1),border-color .18s;}
     .card-h:hover{transform:translateY(-4px);}
   </style>
 </head>
-<body class="bg-white dark:bg-zinc-950 text-zinc-900 dark:text-zinc-100 font-body antialiased">
+<body class="bg-[#FFF5FF] dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 font-body antialiased">
 
   <!-- Reading progress bar -->
   <div class="progress-bar" :style="`width:${progress}%`" role="progressbar" :aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100" aria-label="Reading progress"></div>
 
   <!-- ═══ NAV ═══ -->
   <header class="fixed top-0.5 left-0 right-0 z-50 transition-all duration-300"
-    :class="scrolled ? 'bg-white/90 dark:bg-zinc-950/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
+    :class="scrolled ? 'bg-[#FFF5FF]/90 dark:bg-zinc-800/90 backdrop-blur-md shadow-sm shadow-black/5' : 'bg-transparent'">
     <nav class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between" aria-label="Main navigation">
       <a href="index.html" class="font-display font-bold text-xl tracking-tight z-10">
         <span class="text-zinc-900 dark:text-white">eli</span><span class="text-accent">ott</span>
@@ -126,7 +126,7 @@
     <div x-show="mobileMenu" x-cloak
       x-transition:enter="transition ease-out duration-200" x-transition:enter-start="opacity-0 -translate-y-2" x-transition:enter-end="opacity-100 translate-y-0"
       x-transition:leave="transition ease-in duration-150" x-transition:leave-start="opacity-100 translate-y-0" x-transition:leave-end="opacity-0 -translate-y-2"
-      class="md:hidden bg-white dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
+      class="md:hidden bg-[#FFF5FF] dark:bg-zinc-950 border-t border-zinc-100 dark:border-zinc-900">
       <ul class="flex flex-col px-6 py-4 gap-4 text-sm font-medium" role="list">
         <li><a href="index.html#services" @click="mobileMenu=false" class="block text-zinc-700 dark:text-zinc-300">Services</a></li>
         <li><a href="projects.html" @click="mobileMenu=false" class="block text-accent font-medium">Work</a></li>
@@ -151,7 +151,7 @@
 
         <!-- Tags + date -->
         <div class="flex flex-wrap items-center gap-3 mb-6">
-          <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">SaaS</span>
+          <span class="text-xs bg-ffd5e9 dark:bg-zinc-800 text-accent border border-FF89C2 dark:border-zinc-700 px-2.5 py-1 rounded-full">SaaS</span>
           <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">Figma</span>
           <span class="text-xs bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 px-2.5 py-1 rounded-full">Tailwind</span>
           <span class="text-xs text-zinc-400 ml-1">2025 · 6 weeks</span>
@@ -238,21 +238,21 @@
       <div class="max-w-5xl mx-auto px-6 mb-12">
         <div class="reveal grid md:grid-cols-3 gap-5">
           <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
-            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+            <div class="w-10 h-10 bg-ffd5e9 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
             </div>
             <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2" style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Progressive disclosure</h3>
             <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">Show only what's needed for the current task. Advanced features revealed on demand, not upfront.</p>
           </div>
           <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
-            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+            <div class="w-10 h-10 bg-ffd5e9 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg>
             </div>
             <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2" style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Opinionated navigation</h3>
             <p class="text-sm text-zinc-500 dark:text-zinc-400 leading-relaxed" style="margin:0;color:inherit;">Reduce the sidebar to 6 core items. Group secondary actions in context panels rather than global nav.</p>
           </div>
           <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
-            <div class="w-10 h-10 bg-orange-50 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
+            <div class="w-10 h-10 bg-ffd5e9 dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
               <svg class="w-5 h-5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
             </div>
             <h3 class="font-display font-bold text-zinc-900 dark:text-white mb-2" style="font-size:1rem;margin:0 0 .5rem;color:inherit;">Goal-first onboarding</h3>
@@ -379,13 +379,13 @@
         </div>
         <div class="grid md:grid-cols-3 gap-6">
 
-          <article class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+          <article class="reveal card-h group bg-[#FFF5FF] dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
             <div class="photo-frame w-full h-44">
               <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=700&q=80" alt="Finlo — Fintech App" loading="lazy"/>
             </div>
             <div class="p-5">
               <div class="flex gap-2 mb-2">
-                <span class="text-xs bg-orange-50 dark:bg-zinc-800 text-accent border border-orange-200 dark:border-zinc-700 px-2.5 py-1 rounded-full">Landing page</span>
+                <span class="text-xs bg-ffd5e9 dark:bg-zinc-800 text-accent border border-FF89C2 dark:border-zinc-700 px-2.5 py-1 rounded-full">Landing page</span>
               </div>
               <a href="#">
                 <h3 class="font-display font-bold text-base text-zinc-900 dark:text-white mb-2 group-hover:text-accent transition-colors">Finlo — Fintech App</h3>
@@ -394,7 +394,7 @@
             </div>
           </article>
 
-          <article class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+          <article class="reveal card-h group bg-[#FFF5FF] dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
             <div class="photo-frame w-full h-44">
               <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=700&q=80" alt="Orea — Creative Agency" loading="lazy"/>
             </div>
@@ -409,7 +409,7 @@
             </div>
           </article>
 
-          <article class="reveal card-h group bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
+          <article class="reveal card-h group bg-[#FFF5FF] dark:bg-zinc-900 rounded-2xl overflow-hidden border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
             <div class="photo-frame w-full h-44">
               <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?w=700&q=80" alt="Bloom — E-commerce" loading="lazy"/>
             </div>
