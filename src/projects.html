@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Projects — Eliott</title>
+  <title>Projects — Abby Carr</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
   <link
@@ -240,7 +240,7 @@
               <article
                 class="project-card group h-full rounded-2xl overflow-hidden bg-[#FFF5FF] dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 hover:border-accent transition-colors">
                 <a :href="p.url" class="block photo-frame w-full h-52">
-                  <img :src="p.img" :alt="p.title" loading="lazy" />
+                  <img :src="p.img" :alt="p.alt" loading="lazy" />
                 </a>
                 <div class="p-6">
                   <div class="flex flex-wrap gap-2 mb-3">
@@ -303,52 +303,53 @@
             {
               id: 1, title: 'Monster Swap', categories: ['Web Dev', 'Creativity'], tags: ['React.js', 'Tailwind CSS'],
               year: '2026', desc: 'Monsters drawn over the years have been brought to life in powerpoint, party game, sticker, and now digital form.',
-              img: 'public/MonsterSwap/display.jpg', url: 'MonsterSwap.html'
+              img: 'public/MonsterSwap/display.jpg', alt: 'Black and white monster stickers laid on a brown fuzzy blanket', url: 'MonsterSwap.html'
             },
             {
               id: 2, title: 'Rain Prediction', categories: ['ML'], tags: ['Python', 'NumPy'],
               year: '2022', desc: 'A rain-focused ML project where hand-coded models teach the applications of different classification models.',
-              img: 'public/AustraliaRain/display.jpg', url: 'AustraliaRain.html'
+              img: 'public/AustraliaRain/display.jpg', alt: 'Tiny raindrops creating ripples on water with a gray toned background', url: 'AustraliaRain.html'
             },
             {
               id: 3, title: 'Once Upon a Vis', categories: ['HCI', 'Web Dev'], tags: ['Tableau', 'Python', 'NumPy', 'React.js'],
               year: '2022', desc: 'A human-centered interpretation of data from the top 100 GoodReads books. Learning based in design principles.',
-              img: 'public/OnceUponAVis/display.jpg', url: 'OnceUponAVis.html'
+              img: 'public/OnceUponAVis/display.jpg', alt: 'Two children bent over marking, in pen, a schoolbook with pictures and text', url: 'OnceUponAVis.html'
+
             },
             {
               id: 4, title: 'Cinefile', categories: ['Web Dev'], tags: ['SQL', 'Python', 'React.js'],
               year: '2019', desc: 'Designing and constructing the central SQL backend to a movie-rating website with multiple user roles. ',
-              img: 'public/Cinefile/display.jpg', url: 'Cinefile.html'
+              img: 'public/Cinefile/display.jpg', alt: 'A loose reel of video film with light reflecting through', url: 'Cinefile.html'
             },
             {
               id: 5, title: 'PAANIC', categories: ['ML'], tags: ['Python', 'PyTorch'],
               year: '2022', desc: 'A dive into the current LLMs led to our group developing a BERT-based model. Focus for this project lies in robotic usage.',
-              img: 'public/PAANIC/display.jpg', url: 'PAANIC.html'
+              img: 'public/PAANIC/display.jpg', alt: 'A tall robot with wheels next to a cleared library table and chairs', url: 'PAANIC.html'
             },
             {
               id: 6, title: 'Chroma', categories: ['Creativity'], tags: [],
               year: '2022', desc: 'This world bible and more, belonging to an original imaginary world, includes the way it works and the beings who inhabit it.',
-              img: 'public/Chroma/display.jpg', url: 'Chroma.html'
+              img: 'public/Chroma/display.jpg', alt: 'Bright swirling rainbow colors in a bubble on a black background', url: 'Chroma.html'
             },
             {
               id: 7, title: 'BulletinBoard', categories: ['HCI', 'Web Dev'], tags: ['React.js'],
               year: '2021', desc: 'Iteratively creating a product for targeted stakeholders, including user testing throughout. Human-Computer Design.',
-              img: 'public/BulletinBoard/display.jpg', url: 'BulletinBoard.html'
+              img: 'public/BulletinBoard/display.jpg', alt: 'A suited man placing sticky notes on a bulletin board', url: 'BulletinBoard.html'
             },
             {
               id: 8, title: 'Massachusetts Education', categories: ['ML'], tags: ['Python', 'NumPy', 'Sklearn'],
               year: '2020', desc: 'Discovering correlations and basic analysis through Sklearn and visualizing with Seaborn. Uses Statistical Analysis.',
-              img: 'public/MassEdML/display.jpg', url: 'MassEdML.html'
+              img: 'public/MassEdML/display.jpg', alt: 'A wide lecture hall with students all raising their hands', url: 'MassEdML.html'
             },
             {
               id: 9, title: 'Case Interview', categories: ['Creativity'], tags: [],
               year: '2023', desc: 'A self-developed guide for mock case interviews, motivated by a lack of diverse practice interviews for students.',
-              img: 'public/CaseInterview/display.jpg', url: 'CaseInterview.html'
+              img: 'public/CaseInterview/display.jpg', alt: 'Two compacts of beige powder and two small tubes on a marbled counter', url: 'CaseInterview.html'
             },
             {
               id: 10, title: 'Infectious Disease Simulator', categories: ['Web Dev'], tags: ['Python', 'HTML/CSS', 'JavaScript'],
               year: '2020', desc: 'In under 24 hours, a hackathon collaboration brought forth an interactive and minimalist visual of disease spread.',
-              img: 'public/InfectDisease/display.jpg', url: 'InfectDisease.html'
+              img: 'public/InfectDisease/display.jpg', alt: 'A graph with a blue line plotting points horizontally along the x-axis, and a yellow one plotting a low bell curve', url: 'InfectDisease.html'
             },
           ],
 
