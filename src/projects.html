@@ -212,7 +212,7 @@
         <div class="reveal flex flex-wrap gap-2">
           <template x-for="f in filterOptions" :key="f.value">
             <button @click="filter = f.value"
-              :class="filter === f.value ? 'bg-accent text-white border-accent' : 'bg-[#FFF5FF] dark:bg-zinc-900 text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700 hover:border-accent'"
+              :class="filter === f.value ? 'bg-accent text-white border-accent' : 'bg-zinc-100 border border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-400 hover:border-accent'"
               class="text-sm px-4 py-1.5 rounded-full border transition-colors" x-text="f.label">
             </button>
           </template>
