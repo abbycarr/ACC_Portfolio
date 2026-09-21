@@ -11,7 +11,7 @@ Teamwork, Jupyter, Self-management, Git,
 Data Analysis, Data Manipulation, Data Visualization
 
 Paper
-This is an in-depth explination of each feature we collected, as well as insights surrounding the data and its source.
+This is an in-depth explanation of each feature we collected, as well as insights surrounding the data and its source.
 
 Github
 https://github.com/abbycarr/MA-education-machine-learning
