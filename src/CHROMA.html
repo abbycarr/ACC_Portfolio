@@ -341,7 +341,7 @@
               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
           </svg>
         </button>
-        <a href="public/AbbyCarrResume.pdf"
+        <a href="public/AbbyCarrResume.pdf" target="_blank"
           class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume
           →</a>
         <button @click="mobileMenu=!mobileMenu"
@@ -427,23 +427,26 @@
             <p class="font-medium text-zinc-900 dark:text-white text-sm">Book Entry, Theme Park, World Bible</p>
           </div>
           <div class="flex flex-row">
-            <a href="/public/Chroma/Slides.pdf" title="World Bible">
-              <svg class="stroke-zinc-900 dark:stroke-white" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="/public/Chroma/Slides.pdf" title="World Bible" target="_blank">
+              <svg class="stroke-zinc-900 dark:stroke-white" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M16.5227 16.3977C12.754 18.5736 7.93498 17.2823 5.75912 13.5136C3.58325 9.7449 4.87451 4.92587 8.64322 2.75M12 18.2503V21.2503M16.75 21.2503H7.25003M8.40104 11.9893C9.73464 14.2992 12.6882 15.0906 14.9981 13.757C17.3079 12.4234 18.0994 9.46978 16.7658 7.15993C15.4322 4.85007 12.4786 4.05866 10.1687 5.39225C7.85886 6.72585 7.06745 9.67945 8.40104 11.9893Z"
                   stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
               </svg>
             </a>
-            <a href="/public/Chroma/Paper2.pdf" title="Field Guide Entry">
-              <svg class="fill-zinc-900 dark:fill-white" width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <a href="/public/Chroma/Paper2.pdf" title="Field Guide Entry" target="_blank">
+              <svg class="fill-zinc-900 dark:fill-white" width="40" height="40" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M8.25 5C7.83579 5 7.5 5.33579 7.5 5.75V9.75C7.5 10.1642 7.83579 10.5 8.25 10.5H15.75C16.1642 10.5 16.5 10.1642 16.5 9.75V5.75C16.5 5.33579 16.1642 5 15.75 5H8.25ZM9 9V6.5H15V9H9Z" />
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M6.75 2C5.50736 2 4.5 3.00736 4.5 4.25V19C4.5 20.6569 5.84315 22 7.5 22H18.75C19.1642 22 19.5 21.6642 19.5 21.25C19.5 20.8358 19.1642 20.5 18.75 20.5H18V17.5H18.75C19.1642 17.5 19.5 17.1642 19.5 16.75V4.25C19.5 3.00736 18.4926 2 17.25 2H6.75ZM18 16V4.25C18 3.83579 17.6642 3.5 17.25 3.5H6.75C6.33579 3.5 6 3.83579 6 4.25V16.4013C6.44126 16.1461 6.95357 16 7.5 16H18ZM16.5 17.5V20.5H7.5C6.67157 20.5 6 19.8284 6 19C6 18.1716 6.67157 17.5 7.5 17.5H16.5Z" />
               </svg>
 
-            </a><a href="/public/Chroma/Paper.pdf" title="Theme Park Plan">
-              <svg class="fill-zinc-900 dark:fill-white" width="41" height="41" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            </a><a href="/public/Chroma/Paper.pdf" title="Theme Park Plan" target="_blank">
+              <svg class="fill-zinc-900 dark:fill-white" width="41" height="41" viewBox="0 0 25 25" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" clip-rule="evenodd"
                   d="M13.1523 3.3457C13.1523 2.93149 12.8166 2.5957 12.4023 2.5957C11.9881 2.5957 11.6523 2.93149 11.6523 3.3457V9.3457L6.56249 9.3457C6.13389 9.3457 5.7202 9.50299 5.39986 9.78774L3.71236 11.2877C2.92921 11.9839 2.92921 13.2075 3.71237 13.9037L5.39987 15.4037C5.72021 15.6884 6.13391 15.8457 6.56251 15.8457L11.6523 15.8457V21.8457C11.6523 22.2599 11.9881 22.5957 12.4023 22.5957C12.8166 22.5957 13.1523 22.2599 13.1523 21.8457V15.1312C13.1529 15.1194 13.1532 15.1076 13.1532 15.0957V10.8457H18.244C18.6726 10.8457 19.0863 10.6884 19.4067 10.4037L21.0941 8.90367C21.8773 8.20753 21.8773 6.98387 21.0941 6.28774L19.4066 4.78774C19.0863 4.50299 18.6726 4.3457 18.244 4.3457H13.1523V3.3457ZM11.6523 10.8457L11.6523 14.3457L6.56251 14.3457C6.50128 14.3457 6.44218 14.3232 6.39642 14.2826L4.70891 12.7826C4.59703 12.6831 4.59703 12.5083 4.70891 12.4088L6.3964 10.9089C6.44217 10.8682 6.50127 10.8457 6.56249 10.8457H11.6523ZM13.1533 5.8457V9.3457H18.244C18.3052 9.3457 18.3643 9.32323 18.4101 9.28256L20.0976 7.78256C20.2095 7.68311 20.2095 7.5083 20.0976 7.40885L18.4101 5.90885C18.3643 5.86817 18.3052 5.8457 18.244 5.8457H13.1533Z" />
               </svg>
@@ -492,7 +495,8 @@
           <div class="reveal grid md:grid-cols-3 gap-5">
             <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
               <div class="w-10 h-10 bg-[#ffd5e9] dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
-                <svg class="stroke-zinc-800 dark:stroke-zinc-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="stroke-zinc-800 dark:stroke-zinc-400" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M16.5227 16.3977C12.754 18.5736 7.93498 17.2823 5.75912 13.5136C3.58325 9.7449 4.87451 4.92587 8.64322 2.75M12 18.2503V21.2503M16.75 21.2503H7.25003M8.40104 11.9893C9.73464 14.2992 12.6882 15.0906 14.9981 13.757C17.3079 12.4234 18.0994 9.46978 16.7658 7.15993C15.4322 4.85007 12.4786 4.05866 10.1687 5.39225C7.85886 6.72585 7.06745 9.67945 8.40104 11.9893Z"
                     stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -508,7 +512,8 @@
             </div>
             <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
               <div class="w-10 h-10 bg-[#ffd5e9] dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
-                <svg class="fill-zinc-800 dark:fill-zinc-400" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="fill-zinc-800 dark:fill-zinc-400" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M8.25 5C7.83579 5 7.5 5.33579 7.5 5.75V9.75C7.5 10.1642 7.83579 10.5 8.25 10.5H15.75C16.1642 10.5 16.5 10.1642 16.5 9.75V5.75C16.5 5.33579 16.1642 5 15.75 5H8.25ZM9 9V6.5H15V9H9Z" />
                   <path fill-rule="evenodd" clip-rule="evenodd"
@@ -525,7 +530,8 @@
             </div>
             <div class="bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-7 border border-zinc-100 dark:border-zinc-800">
               <div class="w-10 h-10 bg-[#ffd5e9] dark:bg-zinc-800 rounded-xl flex items-center justify-center mb-4">
-                <svg class="fill-zinc-800 dark:fill-zinc-400" width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="fill-zinc-800 dark:fill-zinc-400" width="25" height="25" viewBox="0 0 25 25" fill="none"
+                  xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd"
                     d="M13.1523 3.3457C13.1523 2.93149 12.8166 2.5957 12.4023 2.5957C11.9881 2.5957 11.6523 2.93149 11.6523 3.3457V9.3457L6.56249 9.3457C6.13389 9.3457 5.7202 9.50299 5.39986 9.78774L3.71236 11.2877C2.92921 11.9839 2.92921 13.2075 3.71237 13.9037L5.39987 15.4037C5.72021 15.6884 6.13391 15.8457 6.56251 15.8457L11.6523 15.8457V21.8457C11.6523 22.2599 11.9881 22.5957 12.4023 22.5957C12.8166 22.5957 13.1523 22.2599 13.1523 21.8457V15.1312C13.1529 15.1194 13.1532 15.1076 13.1532 15.0957V10.8457H18.244C18.6726 10.8457 19.0863 10.6884 19.4067 10.4037L21.0941 8.90367C21.8773 8.20753 21.8773 6.98387 21.0941 6.28774L19.4066 4.78774C19.0863 4.50299 18.6726 4.3457 18.244 4.3457H13.1523V3.3457ZM11.6523 10.8457L11.6523 14.3457L6.56251 14.3457C6.50128 14.3457 6.44218 14.3232 6.39642 14.2826L4.70891 12.7826C4.59703 12.6831 4.59703 12.5083 4.70891 12.4088L6.3964 10.9089C6.44217 10.8682 6.50127 10.8457 6.56249 10.8457H11.6523ZM13.1533 5.8457V9.3457H18.244C18.3052 9.3457 18.3643 9.32323 18.4101 9.28256L20.0976 7.78256C20.2095 7.68311 20.2095 7.5083 20.0976 7.40885L18.4101 5.90885C18.3643 5.86817 18.3052 5.8457 18.244 5.8457H13.1533Z" />
                 </svg>
