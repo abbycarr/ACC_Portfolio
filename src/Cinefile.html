@@ -341,7 +341,7 @@
               d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707M17.657 17.657l-.707-.707M6.343 6.343l-.707-.707M12 8a4 4 0 100 8 4 4 0 000-8z" />
           </svg>
         </button>
-        <a href="public/AbbyCarrResume.pdf"  target="_blank"
+        <a href="public/AbbyCarrResume.pdf" target="_blank"
           class="hidden md:inline-flex items-center gap-2 btn-primary bg-accent text-white text-sm font-medium px-5 py-2 rounded-full hover:bg-accent-light transition-colors">Resume
           →</a>
         <button @click="mobileMenu=!mobileMenu"
@@ -428,7 +428,7 @@
             <p class="text-xs text-zinc-400 uppercase tracking-widest mb-1">Deliverables</p>
             <p class="font-medium text-zinc-900 dark:text-white text-sm">Website, Paper, Slides</p>
           </div>
-          <div class="flex flex-row">
+          <div class="flex flex-row gap-2">
             <a target="_blank" href="https://github.com/natalieduerr/cinefile" title="Github Repo">
               <svg class="fill-zinc-900 dark:fill-white" width="40" height="40" viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg">
@@ -458,12 +458,13 @@
       <!-- ═══ HERO IMAGE ═══ -->
       <div class="max-w-6xl mx-auto px-6 mb-16">
         <div class="reveal photo-frame w-full h-73 md:h-[480px] rounded-3xl">
-          <img src="public/Cinefile/display.jpg" alt="Novu — SaaS Dashboard redesign hero" loading="eager" />
+          <img src="public/Cinefile/display.jpg" alt="A loose reel of video film with light reflecting through"
+            loading="eager" />
         </div>
       </div>
 
       <!-- ═══ ARTICLE BODY ═══ -->
-      <div class="max-w-3xl mx-auto px-6 pb-4 prose-cs">
+      <div class="max-w-3xl mx-auto px-6 pb-10 prose-cs">
         <h2>The setup</h2>
         <p>
           Cinefile focuses on films, their directors, festivals they debuted at, the awards they won, and
@@ -473,10 +474,10 @@
           After the initial creation, MySQLWorkbench was used to create a dump of the database and all
           related items to be used by the API and front-end.
         </p>
-      </div>
-
-
-      <div class="max-w-3xl mx-auto px-6 pb-16 prose-cs">
+        <div class="flex flex-col items-center gap-4">
+          <img class="w-4/5" src="public/Cinefile/EER.png" />
+          <img class="w-4/5" src="public/Cinefile/UML.png" />
+        </div>
 
         <h2>Results</h2>
         <p> Our project provides the ability to read all films, information pertaining
@@ -589,7 +590,8 @@
     <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
       <p class="text-sm text-zinc-400">© <span id="yr"></span> Eliott. All rights reserved. <br> Template developed by
         <a href="https://lbegey78.gumroad.com/" target="_blank" class="font-bold">Laurent Begey</a> • Distributed by <a
-          href="https://themewagon.com/" target="_blank" class="font-bold">ThemeWagon</a></p>
+          href="https://themewagon.com/" target="_blank" class="font-bold">ThemeWagon</a>
+      </p>
       <p class="text-xs text-zinc-500">Built with <a href="https://tailwindcss.com"
           class="hover:text-zinc-900 dark:hover:text-white transition-colors" rel="noopener noreferrer"
           target="_blank">Tailwind CSS</a> &amp; <a href="https://alpinejs.dev"
