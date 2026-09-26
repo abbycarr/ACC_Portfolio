@@ -2,7 +2,7 @@
 
 A GitHub-hosted website displaying my technical, creative, and instructional work. 
 
-View demo at: [https://abbycarr.github.io/ACC_Portfolio/](https://abbycarr.github.io/ACC_Portfolio/)
+View live site at: [https://abbycarr.com](https://abbycarr.com)
 
 ## Technologies
 
