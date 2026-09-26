@@ -22,7 +22,7 @@ Example Method:
    requiring Node.js ([download instructions here](https://nodejs.org/en/download)) 
 
    cd ACC_Portfolio
-   npx serve src
+   npx serve
 
 ### Usage
 
